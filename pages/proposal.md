@@ -1,7 +1,7 @@
 # CMPS 4420 Final Project Proposal
-# *SQLite vs MongoDB Performance*
-### **Jeff Hicks**  
-### **Spring 2023**  
+### *SQLite vs MongoDB Performance*
+#### **Jeff Hicks**  
+#### **Spring 2023**  
 
 <br/>
 

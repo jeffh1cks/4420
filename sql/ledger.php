@@ -1,3 +1,7 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
 <?php
 
 require_once("config.php");
@@ -92,4 +96,6 @@ while ($ledgerRow = $ledgerResults->fetchArray(SQLITE3_ASSOC)) {
 
 echo makeTable($ledger);
 ?>
+
+</html>
 

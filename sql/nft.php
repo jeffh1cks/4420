@@ -1,3 +1,7 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
 <?php
 
 require_once("config.php");
@@ -189,4 +193,5 @@ if (isset($_REQUEST["ownerid"])) {
 
 
 ?>
+</html>
 
