@@ -78,6 +78,8 @@ After getting the functionality of my MongoDB working, compare the performance b
 
 [Mongoose](https://www.mongodb.com/developer/languages/javascript/mongoose-versus-nodejs-driver/)
 
+[Mongoose Docs](https://mongoosejs.com/docs/guides.html)
+
 [Insomnia](https://insomnia.rest/) 
    
 [SQLite](https://www.sqlite.org/about.html)
