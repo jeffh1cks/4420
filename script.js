@@ -13,7 +13,7 @@ function onLoad(){
     {label: "Home", href: "?md=home"},
     {label: "Project Proposal", href: "?md=proposal"},
     {label: "Week 1 Update", href: "?md=week1"},
-    {label: "Week 2 Update", href: "#"},
+    {label: "Week 2 Update", href: "?md=week2"},
     {label: "4420 Lab 2", href: "?page=sql"},
     {label: "4420 Final", href: "#"},
     {label: "Results", href: "#"},
