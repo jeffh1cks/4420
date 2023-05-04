@@ -1,30 +1,66 @@
 function displayResult(response) {
-    if (response.id == 2){
+    if (response.id == 1) {
+        $(`#getOwnersResponse`).text(response.result)
+    }
+    else if (response.id == 2){
         let output = "";
-        for (let res of response.result) {
-            if (res.name == $('#ownerName').val()) {output = ""}
-            output += `ownerid: ${res.id}<br>`
-            output += `ownername: ${res.name}<br>`
-            output += `NFTs: ${res.nfts.length}<br>`
-            output += `<br>`
-            if (res.name == $('#ownerName').val()) {break;}
-        }
+        if (response.result.length > 0){
+            if($('#ownerName').val()) {
+                let valid = false
+                for (let res of response.result) {
+                    if (res.name == $('#ownerName').val()) {output = ""; valid = true}
+                    output += `ownerid: ${res.id}<br>`
+                    output += `ownername: ${res.name}<br>`
+                    output += `NFTs: ${res.nfts.length}<br>`
+                    output += `<br>`
+                    if (res.name == $('#ownerName').val() && valid) {break;}
+                }
+                if (!valid) {output = `No owners found by the name ${$('#ownerName').val()}`}
+            } else {
+                for (let res of response.result) {
+                    output += `ownerid: ${res.id}<br>`
+                    output += `ownername: ${res.name}<br>`
+                    output += `NFTs: ${res.nfts.length}<br>`
+                    output += `<br>`
+                }
+            }
+        } else {output = "No owners in database!"}
         $(`#getOwnersResponse`).html(output)
+    }
+    else if (response.id == 3) {
+        $(`#getNftsResponse`).text(response.result)
     }
     else if (response.id == 4){
         let output = "";
-        for (let res of response.result) {
-            if (res.id == $('#nftid').val()) {output = ""}
-            output += `nftid: ${res.id}<br>`
-            output += `ownerid: ${res.ownerid}<br>`
-            output += `nftname: ${res.name}<br>`
-            output += `price: $${res.price}<br>`
-            output += `Created On: ${res.createdon}<br>`
-            output += `Last Bought: ${res.lastbought}<br>`
-            output += `Payload: ${res.payload}<br>`
-            output += `<br>`
-            if (res.id == $('#nftid').val()) {break;}
+        if($('#nftid').val()) {
+            let valid = false
+            for (let res of response.result) {
+                if (res.id == $('#nftid').val()) {output = ""; valid=true}
+                output += `nftid: ${res.id}<br>`
+                output += `ownerid: ${res.ownerid}<br>`
+                output += `nftname: ${res.name}<br>`
+                output += `price: $${res.price}<br>`
+                output += `Created On: ${res.createdon}<br>`
+                output += `Last Bought: ${res.lastbought}<br>`
+                output += `Payload: ${res.payload}<br>`
+                output += `<br>`
+                if (res.id == $('#nftid').val()) {break;}
+            }
+            if (!valid) {output = `No NFTs found with the id: ${$('#nftid').val()}`}
+        } else {
+            for (let res of response.result) {
+                output += `nftid: ${res.id}<br>`
+                output += `ownerid: ${res.ownerid}<br>`
+                output += `nftname: ${res.name}<br>`
+                output += `price: $${res.price}<br>`
+                output += `Created On: ${res.createdon}<br>`
+                output += `Last Bought: ${res.lastbought}<br>`
+                output += `Payload: ${res.payload}<br>`
+                output += `<br>`
+            }
         }
+
+        if (response.result.length == 0){output = "No NFTs in database!"}
         $(`#getNftsResponse`).html(output)
     }
     else if (response.id == 5){
@@ -34,26 +70,31 @@ function displayResult(response) {
             for (let res of response.result) {
                 output += `nftid: ${res.id}<br>`
                 output += `ownerid: ${res.ownerid}<br>`
-                output += `resname: ${res.name}<br>`
+                output += `nftname: ${res.name}<br>`
                 output += `price: $${res.price}<br>`
                 output += `Created On: ${res.createdon}<br>`
                 output += `Last Bought: ${res.lastbought}<br>`
                 output += `Payload: ${res.payload}<br>`
                 output += `<br>`
             }
-        }
-        for (let res of response.result) {
-            if (res.ownerid == $('#nftownerid').val()) {
-                output += `nftid: ${res.id}<br>`
-                output += `ownerid: ${res.ownerid}<br>`
-                output += `resname: ${res.name}<br>`
-                output += `price: $${res.price}<br>`
-                output += `Created On: ${res.createdon}<br>`
-                output += `Last Bought: ${res.lastbought}<br>`
-                output += `Payload: ${res.payload}<br>`
-                output += `<br>`
+        } else {
+            let valid = false
+            for (let res of response.result) {
+                if (res.ownerid == $('#nftownerid').val()) {
+                    output += `nftid: ${res.id}<br>`
+                    output += `ownerid: ${res.ownerid}<br>`
+                    output += `resname: ${res.name}<br>`
+                    output += `price: $${res.price}<br>`
+                    output += `Created On: ${res.createdon}<br>`
+                    output += `Last Bought: ${res.lastbought}<br>`
+                    output += `Payload: ${res.payload}<br>`
+                    output += `<br>`
+                    valid = true
+                }
             }
+            if (!valid) {output = `No NFTs found with ownerid: ${$('#nftownerid').val()}`}
         }
+        if (response.result.length == 0){output = "No NFTs in database!"}
         $(`#getNftsResponse`).html(output)
     }
 }
