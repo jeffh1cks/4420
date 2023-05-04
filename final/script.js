@@ -22,7 +22,6 @@ function displayResult(response) {
             output += `Created On: ${res.createdon}<br>`
             output += `Last Bought: ${res.lastbought}<br>`
             output += `Payload: ${res.payload}<br>`
-            output += `Bytes: ${res.bytes}<br>`
             output += `<br>`
             if (res.id == $('#nftid').val()) {break;}
         }
@@ -40,7 +39,6 @@ function displayResult(response) {
                 output += `Created On: ${res.createdon}<br>`
                 output += `Last Bought: ${res.lastbought}<br>`
                 output += `Payload: ${res.payload}<br>`
-                output += `Bytes: ${res.bytes}<br>`
                 output += `<br>`
             }
         }
@@ -53,7 +51,6 @@ function displayResult(response) {
                 output += `Created On: ${res.createdon}<br>`
                 output += `Last Bought: ${res.lastbought}<br>`
                 output += `Payload: ${res.payload}<br>`
-                output += `Bytes: ${res.bytes}<br>`
                 output += `<br>`
             }
         }
