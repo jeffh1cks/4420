@@ -15,7 +15,7 @@ function onLoad(){
     {label: "Week 1 Update", href: "?md=week1"},
     {label: "Week 2 Update", href: "?md=week2"},
     {label: "4420 Lab 2", href: "?page=sql"},
-    {label: "4420 Final", href: "#"},
+    {label: "4420 Final", href: "?page=final"},
     {label: "Results", href: "#"},
   ]
   for (link of links){
@@ -23,9 +23,6 @@ function onLoad(){
     li.addClass("navItem")
     let href = $(`<a href='${link.href}'>${link.label}</a>`);
 
-    if(link.target){
-      href.attr('target', link.target);
-    }
     li.append(href)
     $("#navbar").append(li)
   }
@@ -44,7 +41,15 @@ function onLoad(){
       md2html(res, element)
       });
   }
-  else if (page) {
+  else if (page == "sql") {
+    let iframe = $(`<iframe></iframe>`);
+    iframe.attr("src", `https://jhicks.cs3680.com/4420/${page}`)
+    iframe.attr("id", "dataWindow")
+    let title = (page=="sql") ? "4420 Lab 2" : "4420 Final"
+    $("#container").append($(`<h1 id='title'>${title}</h1>`))
+    $("#container").append(iframe)
+  }
+  else if (page == "final") {
     let iframe = $(`<iframe></iframe>`);
     iframe.attr("src", `https://jhicks.cs3680.com/4420/${page}`)
     iframe.attr("id", "dataWindow")

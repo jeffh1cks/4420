@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="./style.css">
+        <title>4420 Final</title>
+    </head>
+    <body>
+        <nav id="nav">
+            <a href="owner.html">Owners</a>
+            <a href="#">NFTs</a>
+            <a href="#">Ledger</a>
+            <a href="#">Ownership time</a>
+        </nav>
+        <div id="container">
+            <div class="top">
+                <label>New NFT's name</label>
+                <input type="text" id="name">
+                <br>
+                <label>New NFT's price ($)</label>
+                <input type="text" id="price">
+                <br>
+                <label>New NFT's ownerid</label>
+                <input type="text" id="ownerid">
+                <br>
+                <label>New NFT's content *</label>
+                <input type="text" id="payload">
+                <br>
+                <input type="button" id="createNft" value="Create">
+            </div>
+            <div class="top">
+                <label>Search by NFT ID</label>
+                <input type="text" id="nftid">
+                <br>
+                <input type="button" id="getNfts" value="Show Nfts">
+            </div>
+            <div class="top">
+                <label>Search by Owner ID</label>
+                <input type="text" id="nftownerid">
+                <br>
+                <input type="button" id="getOwnersNft" value="Show NFTs by Owner">
+            </div>
+            <div class="bottom">
+                <p id="getNftsResponse"></p>
+            </div>
+        </div>
+        <div id="error" class="hidden"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" 
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="./script.js"></script>
+</html>

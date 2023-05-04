@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="./style.css">
+        <title>4420 Final</title>
+    </head>
+    <body>
+        <nav id="nav">
+            <a href="#">Owners</a>
+            <a href="nft.html">NFTs</a>
+            <a href="#">Ledger</a>
+            <a href="#">Ownership time</a>
+        </nav>
+        <div id="container">
+            <div class="top">
+                <label>New Owner's name</label>
+                <input type="text" id="name">
+                <br>
+                <input type="button" id="createOwner" value="Create">
+            </div>
+            <div class="bottom">
+                <p id="ownerResponse"></p>
+            </div>
+            <div class="top">
+                <label>Search by Owner Name</label>
+                <input type="text" id="ownerName">
+                <br>
+                <input type="button" id="getOwners" value="Show Owner">
+            </div>
+            <div class="bottom">
+                <p id="getOwnersResponse"></p>
+            </div>
+        </div>
+        <div id="error" class="hidden"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" 
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="./script.js"></script>
+</html>

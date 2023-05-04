@@ -9,7 +9,7 @@ body, a {
 }
 
 input[type=button],input[type=submit] {
-    background-color: #00ff55;
+    background-color: rgb(0, 255, 85);
     color: black;
     padding: 3px;
     margin: 3px;

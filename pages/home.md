@@ -43,9 +43,109 @@ PRAGMA foreign_keys = ON;
 ```
 
 ## MONGO:
+<br/>
+
+## Owner Schema: 
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
 
 
-### COMING SOON
+const ownerSchema = new mongoose.Schema({
+  id: { type: Number, required:true, unique: true},
+  name: { type: String, required: true },
+  nfts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Nft"
+    }
+  ]
+});
+
+ownerSchema.pre('validate', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({_id:'ownerid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+    .then((res) => {
+      this.id = res.seq;
+      next();
+    })
+})
+
+module.exports = mongoose.model('Owner', ownerSchema);
+```
+
+## NFT Schema: 
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
+
+const nftSchema = new mongoose.Schema({
+  id: { type: Number, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true, default: 0.00 },
+  createdon: { type: Date, default: Date.now },
+  lastbought: { type: Date, default: Date.now },
+  payloadtype: { type: String, default: null },
+  payloadfilename: { type: String, default: null },
+  payload: { type: Buffer, validate: [payloadSizeLimit, 'Payload size limit exceeded'] }
+});
+
+function payloadSizeLimit(value) {
+  return value.length <= 1048576;
+}
+
+nftSchema.pre('validate', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({_id:'nftid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+    .then((res) => {
+      console.log(res);
+      this.id = res.seq;
+      next();
+    })
+})
+module.exports = mongoose.model('Nft', nftSchema);
+```
+
+## Ledger Schema: 
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
+
+const ledgerSchema = new mongoose.Schema({
+    id: {type: Number, required: true, unique: true, index: true},
+    nftid: {type: Number, required: true, index: true},
+    buyerid: {type: Number, required: true, index: true},
+    sellerid: {type: Number, default: null, index: true},
+    buyerprice: {type: Number, required: true,default: 0.00},
+    sellerprice: {type: Number, required: true,default: 0.00},
+    sellerdaysowned: {type: Number, default: 0.0},
+    changedon: {type: Date, default: Date.now}
+});
+ledgerSchema.pre('validate', function(next) {
+    var doc = this;
+    Counter.findByIdAndUpdate({_id:'ledgerid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+      .then((res) => {
+        this.id = res.seq;
+        next();
+      })
+  })
+
+module.exports = mongoose.model('Ledger', ledgerSchema);
+```
+
+## Counter: 
+```javascript
+const mongoose = require('mongoose');
+
+const counterSchema = new mongoose.Schema({
+  _id: { type: String, required: true},
+  seq: { type: Number, default: 0}
+});
+
+module.exports = mongoose.model('Counter', counterSchema);
+```
+
+
 <br/>
 
  

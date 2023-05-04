@@ -1,6 +1,4 @@
 # Week 2 Update
-<br/>
-
 ## MongoDB
 <div id="text">
 I downloaded the community version of  MongoDB onto my server and was able to run using "MongoSH." After downloading MongoDB, I experimented with creating a database and adding collections to that database. My ultimate goal was to have collections for "Owners", "NFTs", and "Ledger". 
@@ -21,16 +19,104 @@ I later realized that since everything is an object, I could put the list of NFT
 <br/>
 
 ## Owner Schema: 
-![Owners Schema](./images/ownerSchema.png)
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
+
+
+const ownerSchema = new mongoose.Schema({
+  id: { type: Number, required:true, unique: true},
+  name: { type: String, required: true },
+  nfts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Nft"
+    }
+  ]
+});
+
+ownerSchema.pre('validate', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({_id:'ownerid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+    .then((res) => {
+      this.id = res.seq;
+      next();
+    })
+})
+
+module.exports = mongoose.model('Owner', ownerSchema);
+```
 
 ## NFT Schema: 
-![NFT Schema](./images/nftSchema.png)
-<br/>
-<br/>
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
 
+const nftSchema = new mongoose.Schema({
+  id: { type: Number, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true, default: 0.00 },
+  createdon: { type: Date, default: Date.now },
+  lastbought: { type: Date, default: Date.now },
+  payloadtype: { type: String, default: null },
+  payloadfilename: { type: String, default: null },
+  payload: { type: Buffer, validate: [payloadSizeLimit, 'Payload size limit exceeded'] }
+});
+
+function payloadSizeLimit(value) {
+  return value.length <= 1048576;
+}
+
+nftSchema.pre('validate', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({_id:'nftid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+    .then((res) => {
+      console.log(res);
+      this.id = res.seq;
+      next();
+    })
+})
+module.exports = mongoose.model('Nft', nftSchema);
+```
+
+## Ledger Schema: 
+```javascript
+const mongoose = require('mongoose');
+const Counter = require('./counterSchema.js');
+
+const ledgerSchema = new mongoose.Schema({
+    id: {type: Number, required: true, unique: true, index: true},
+    nftid: {type: Number, required: true, index: true},
+    buyerid: {type: Number, required: true, index: true},
+    sellerid: {type: Number, default: null, index: true},
+    buyerprice: {type: Number, required: true,default: 0.00},
+    sellerprice: {type: Number, required: true,default: 0.00},
+    sellerdaysowned: {type: Number, default: 0.0},
+    changedon: {type: Date, default: Date.now}
+});
+ledgerSchema.pre('validate', function(next) {
+    var doc = this;
+    Counter.findByIdAndUpdate({_id:'ledgerid'}, {$inc: {seq:1}}, {returnDocument: "after"})
+      .then((res) => {
+        this.id = res.seq;
+        next();
+      })
+  })
+
+module.exports = mongoose.model('Ledger', ledgerSchema);
+```
 
 ## Counter: 
-![Counter Schema](./images/counterSchema.png)
+```javascript
+const mongoose = require('mongoose');
+
+const counterSchema = new mongoose.Schema({
+  _id: { type: String, required: true},
+  seq: { type: Number, default: 0}
+});
+
+module.exports = mongoose.model('Counter', counterSchema);
+```
 
 
 ## API: 
@@ -45,6 +131,7 @@ The different API calls I have created so far are:
 1. Create User
 2. Get All Users
 3. Create NFT
+4. Get All NFTs
 
 <br/>
 I used Insomia to test my routes and to make sure my API was returning expected results. Below are images of sample responses bodies when calling that API or the response claiming my document was created. Before using these for my front-end, I will filter the body to only give users the fields they need. 
@@ -54,16 +141,20 @@ I used Insomia to test my routes and to make sure my API was returning expected 
 ![Create Owner](./images/createOwner.png)
 ![Get Owners](./images/getOwners.png)
 ![Create NFT](./images/createNFT.png)
+![Get NFTs](./images/getNFTs.png)
 
 </div>
 
 ## Next Steps
 
 <div id="text">
-I need to create the Ledger table and get the functionality down of the user purchasing an NFT.
+I need to create API call to Ledger to get functionality of the user purchasing an NFT.
 <br/>
 <br/>
 After getting the functionality of my MongoDB working, compare the performance between this database and our database in SQLITE3. Also, compare the two databases when more users and NFTs are added (vertical scaling).
+<br/>
+<br/>
+I need to create the front-end for my final lab that will look similar to Lab 2 that was using SQLITE3, but will be calling my API to query my MongoDB database to retrieve/insert new owners or nfts. I want to also create documents for my API that a user can access to see how to correctly call my API.
 <br/>
 <br/>
 </div>
