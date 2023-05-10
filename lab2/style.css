@@ -1,0 +1,29 @@
+body, a {
+    color: rgb(247, 2, 2);
+    font-family: monospace;
+    font-size: 20pt;
+    /* text-shadow: 1px 1px 10px white; */
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+input[type=button],input[type=submit] {
+    background-color: rgb(2, 157, 247);
+    color: black;
+    padding: 3px;
+    margin: 3px;
+    font-size: 10pt;
+    border: 1px solid white;
+}
+#nav {
+    margin: 0px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    background-color: rgba(247, 2, 2,0.15);
+}
+th, td {
+    color: rgb(247, 2, 2);
+    font-size: 10pt;
+    padding: 10px;
+}

@@ -13,8 +13,9 @@ function onLoad(){
     {label: "Project Proposal", href: "?md=proposal"},
     {label: "Week 1 Update", href: "?md=week1"},
     {label: "Week 2 Update", href: "?md=week2"},
-    {label: "4420 Lab 2", href: "?page=sql"},
-    {label: "4420 Final", href: "?page=final"},
+    {label: "4420 Lab 2", href: "?page=lab2"},
+    {label: "Final SQLITE3", href: "?page=sql"},
+    {label: "Final MongoDB", href: "?page=mongo"},
     {label: "Results", href: "#"},
   ]
   for (link of links){
@@ -40,19 +41,27 @@ function onLoad(){
       md2html(res, element)
       });
   }
+  else if (page == "lab2") {
+    let iframe = $(`<iframe></iframe>`);
+    iframe.attr("src", `https://jhicks.cs3680.com/4420/${page}`)
+    iframe.attr("id", "dataWindow")
+    let title = "4420 Lab 2"
+    $("#container").append($(`<h1 id='title'>${title}</h1>`))
+    $("#container").append(iframe)
+  }
   else if (page == "sql") {
     let iframe = $(`<iframe></iframe>`);
     iframe.attr("src", `https://jhicks.cs3680.com/4420/${page}`)
     iframe.attr("id", "dataWindow")
-    let title = (page=="sql") ? "4420 Lab 2" : "4420 Final"
+    let title = "SQLITE3 Micro Service"
     $("#container").append($(`<h1 id='title'>${title}</h1>`))
     $("#container").append(iframe)
   }
-  else if (page == "final") {
+  else if (page == "mongo") {
     let iframe = $(`<iframe></iframe>`);
     iframe.attr("src", `https://jhicks.cs3680.com/4420/${page}`)
     iframe.attr("id", "dataWindow")
-    let title = (page=="sql") ? "4420 Lab 2" : "4420 Final"
+    let title = "MongoDB Micro Service"
     $("#container").append($(`<h1 id='title'>${title}</h1>`))
     $("#container").append(iframe)
   }

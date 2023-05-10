@@ -70,7 +70,7 @@ function displayResult(response) {
         } else {
             let valid = false
             for (let res of response.result) {
-                if (res.ownerid == $('#nftownerid').val()) {output = nftOutput(res); valid = true}
+                if (res.ownerid == $('#nftownerid').val()) {output += nftOutput(res); valid = true}
             }
             if (!valid) {output = `No NFTs found with ownerid: ${$('#nftownerid').val()}`}
         }

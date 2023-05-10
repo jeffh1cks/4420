@@ -5,7 +5,7 @@ let buildTable = function(output) {
     table += '</tr>'
     for (res of output) {
         table += `<tr>`
-        table += `<td>${res.nftid}</td><td>${res.ownerid}</td><td>${res.secondsOwned}</td>`
+        table += `<td>${res.nftid}</td><td>${res.ownerid}</td><td>${res.secondsowned}</td>`
         table += `</tr>`
     }
     table += "</table>"
