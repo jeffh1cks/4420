@@ -151,7 +151,7 @@ I used Insomia to test my routes and to make sure my API was returning expected 
 I need to create API call to Ledger to get functionality of the user purchasing an NFT.
 <br/>
 <br/>
-After getting the functionality of my MongoDB working, compare the performance between this database and our database in SQLITE3. Also, compare the two databases when more users and NFTs are added (vertical scaling).
+After getting the functionality of my MongoDB working, I will go back and create a microservice for my sqlite3 data that I am accessing right now locally. 
 <br/>
 <br/>
 I need to create the front-end for my final lab that will look similar to Lab 2 that was using SQLITE3, but will be calling my API to query my MongoDB database to retrieve/insert new owners or nfts. I want to also create documents for my API that a user can access to see how to correctly call my API.

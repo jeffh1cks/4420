@@ -27,9 +27,6 @@ I need to download MongoDB onto my server.
 Create the corresponding tables in my SQLITE3 database to a MongoDB database. Connect these tables in a way to correctly link them like they were linked in the SQLITE3 database.
 <br/>
 <br/>
-After getting the functionality of my MongoDB working, compare the performance between this database and our database in SQLITE3. Also, compare the two databases when more users and NFTs are added (vertical scaling).
-<br/>
-<br/>
 Lastly, create an API that can be used to get information from my MongoDB database and use that to display that on my website. Essentially this will make a distributed database that my website can access. 
 </div>
 

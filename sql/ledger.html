@@ -6,29 +6,26 @@
     </head>
     <body>
         <nav id="nav">
-            <a href="#">Owners</a>
+            <a href="owner.html">Owners</a>
             <a href="nft.html">NFTs</a>
-            <a href="ledger.html">Ledger</a>
+            <a href="#">Ledger</a>
             <a href="ownership_time.html">Ownership time</a>
         </nav>
         <div id="container">
             <div class="top">
-                <label>New Owner's name</label>
-                <input type="text" id="name">
+                <label>NFT ID</label>
+                <input type="text" id="nftid">
                 <br>
-                <input type="button" id="createOwner" value="Create">
+                <label>New Owner's ID</label>
+                <input type="text" id="newownerid">
+                <br>
+                <label>Purchase price $</label>
+                <input type="text" id="newprice">
+                <br>
+                <input type="button" id="createLedger" value="Buy">
             </div>
             <div class="bottom">
-                <p id="ownerResponse"></p>
-            </div>
-            <div class="top">
-                <label>Search by Owner Name</label>
-                <input type="text" id="ownerName">
-                <br>
-                <input type="button" id="getOwners" value="Show Owner">
-            </div>
-            <div class="bottom">
-                <p id="getOwnersResponse"></p>
+                <p id="getLedgerResponse"></p>
             </div>
         </div>
         <div id="error" class="hidden"></div>
@@ -38,4 +35,5 @@
             crossorigin="anonymous">
     </script>
     <script src="./script.js"></script>
+    <script src="./onloadLedger.js"></script>
 </html>

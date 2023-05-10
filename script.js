@@ -1,4 +1,3 @@
-
 function onLoad(){
   let md, page;
   if(window.location.search){

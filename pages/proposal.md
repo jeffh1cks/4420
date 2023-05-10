@@ -1,5 +1,5 @@
 # CMPS 4420 Final Project Proposal
-### *SQLite vs MongoDB Performance*
+### *DATA AS A SERVICE*
 #### **Jeff Hicks**  
 #### **Spring 2023**  
 
@@ -8,7 +8,7 @@
 ## Overall Idea:
 <div id="text">
 
-Taking our Lab 2 data on NFT’s which is written for SQLite, I will transfer the data to MongoDB, a NoSQL Database. After converting the tables, I will create a web-server application, like Lab 2, using PHP and MongoDB to display “Owners,” “NFTs,” “Ledgers,” and “Ownership Time.” I will do this on my own personal server to be able to download and run MongoDB working alongsisde PHP. I will test the performance between SQLite vs MongoDB commands and indexes to determine efficiency between different types of databases. I will also look at scalability between the two databases. Primarily focusing on vertical scaling, as I will increase the size of data. 
+Taking our Lab 2 data on NFT’s which is written for SQLite, I will transfer the data to MongoDB, a NoSQL Database. After converting the tables, I will create a web-server application, like Lab 2, using PHP and MongoDB to display “Owners,” “NFTs,” “Ledgers,” and “Ownership Time.” I will do this on my own personal server to be able to download and run MongoDB working alongsisde PHP. I will create both databases as microservices which I will access through API calls to return the results to my front-end.
 </div>
 
 ## Github: 
@@ -54,10 +54,10 @@ PRAGMA foreign_keys = ON;
 ## Motivation:
 
 <div id="text">
-With most of our work in this course being with relational databases, SQLite and MariaDB, I wanted to compare/contrast it with a NoSQL database. I will take our current working database in SQLite for NFTs and convert to MongoDB. Once I have converted the database, I will run queries on the databases and compare times for execution. I will look at the effect on performance of adding secondary indexes for the different databases. I will also scale up my database to see the effect on each type of database. The purpose of this is to decide which database type best fits the data for our NFT data and how to best handle scaling. 
+With most of our work in this course being with relational databases, SQLite and MariaDB, I wanted to compare/contrast it with a NoSQL database. I will take our current working database in SQLite for NFTs and convert to MongoDB.
 <br/>
 <br/>
-I will also get some practice hosting my web application and database on my own server. With Artemis, only allowing SQLite and MariaDB, there was a need to use my own server for which I will have more control in using MongoDB for my new database.  
+I will get some practice hosting my web application and database on my own server. With Artemis, only allowing SQLite and MariaDB, there was a need to use my own server for which I will have more control in using MongoDB for my new database. I wanted the ability to be able to access the database outside of my application, thus created the need to make API routes to be able to retrieve the data. 
 </div>
 
 
@@ -81,8 +81,7 @@ NoSQL, is nonrelational database, with data not structured thus allowing the for
 ## Justification:
 <div id="text">
 
-Practice in migrating from one database type to another. This will simulate a real-world environment where an employer wants to move their web application from a SQL database to NoSQL database. Depending how the employer wants to scale their application, the ability to migrate from one to another would be a useful task depending on storage limitations, whether to scale horizontally or vertically.   
-After migrating, I will test and analyze performance differences between using the two different types of databases given our NFT data. Also analyze the effects on our database using both primary and secondary indexes and an increase in data to affect scalability. 
+Practice in migrating from one database type to another. This will simulate a real-world environment where an employer wants to move their web application from a SQL database to NoSQL database. Many others may want access to the database also, so creating an API will allow Owner/NFT data to be accessed. 
 
 </div>
 

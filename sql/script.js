@@ -1,8 +1,8 @@
 function nftOutput(result) {
     let output = ""
-    output += `nftid: ${result.id}<br>`
+    output += `nftid: ${result.nftid}<br>`
     output += `ownerid: ${result.ownerid}<br>`
-    output += `nftname: ${result.name}<br>`
+    output += `nftname: ${result.nftname}<br>`
     output += `price: $${result.price}<br>`
     output += `Created On: ${result.createdon}<br>`
     output += `Last Bought: ${result.lastbought}<br>`
@@ -12,9 +12,9 @@ function nftOutput(result) {
 }
 function ownerOutput(result) {
     let output = ""
-    output += `ownerid: ${result.id}<br>`
-    output += `ownername: ${result.name}<br>`
-    output += `NFTs: ${result.nfts.length}<br>`
+    output += `ownerid: ${result.ownerid}<br>`
+    output += `ownername: ${result.ownername}<br>`
+    output += `Nfts: ${result.NFTs}<br>`
     output += `<br>`
     return output
 }
@@ -48,7 +48,7 @@ function displayResult(response) {
         if($('#nftid').val()) {
             let valid = false
             for (let res of response.result) {
-                if (res.id == $('#nftid').val()) {output = nftOutput(res); valid=true}
+                if (res.nftid == $('#nftid').val()) {output = nftOutput(res); valid=true}
             }
             if (!valid) {output = `No NFTs found with the id: ${$('#nftid').val()}`}
         } else {
@@ -115,7 +115,7 @@ $("#createOwner").click(function(){
         id: 1,
         jsonrpc: 2.0,
     }
-    sendRequest('owner',request, displayResult);
+    sendRequest('sql',request, displayResult);
 })
 
 $("#getOwners").click(function(){
@@ -126,21 +126,21 @@ $("#getOwners").click(function(){
         id: 2,
         jsonrpc: 2.0,
     }
-    sendRequest('owner',request, displayResult);
+    sendRequest('sql',request, displayResult);
 })
 $("#createNft").click(function(){
     let request = {
         method: "createNft",
         params: {
             ownerid: $("#ownerid").val(),
-            name: $("#name").val(),
+            nftname: $("#name").val(),
             price: $("#price").val(),
             payload: $("#payload").val()
         },
         id: 3,
         jsonrpc: 2.0,
     }
-    sendRequest('nft',request,displayResult);
+    sendRequest('sql',request,displayResult);
 })
 $("#getNfts").click(function(){
     let request = {
@@ -150,7 +150,7 @@ $("#getNfts").click(function(){
         id: 4,
         jsonrpc: 2.0,
     }
-    sendRequest('nft', request, displayResult);
+    sendRequest('sql', request, displayResult);
 })
 $("#getOwnersNft").click(function(){
     let request = {
@@ -160,7 +160,7 @@ $("#getOwnersNft").click(function(){
         id: 5,
         jsonrpc: 2.0,
     }
-    sendRequest('nft', request, displayResult);
+    sendRequest('sql', request, displayResult);
 })
 $("#createLedger").click(function(){
     let request = {
@@ -173,7 +173,7 @@ $("#createLedger").click(function(){
         id: 6,
         jsonrpc: 2.0,
     }
-    sendRequest('ledger', request, displayResult);
+    sendRequest('sql', request, displayResult);
 })
 $("#getLedger").click(function(){
     let request = {
@@ -183,7 +183,5 @@ $("#getLedger").click(function(){
         id: 7,
         jsonrpc: 2.0,
     }
-    sendRequest('ledger', request, displayResult);
+    sendRequest('sql', request, displayResult);
 })
-
-
