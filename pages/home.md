@@ -6,7 +6,25 @@
 
 
 ## Github: 
-[Github | 4420 Final Project](https://github.com/jeffh1cks/4420)
+[Github | 4420 Final Project](https://github.com/jeffh1cks/4420)  
+<br> 
+
+[Github | 4420 API ](https://github.com/jeffh1cks/4420_API)
+
+## DESCRIPTION:
+**Created Database Microservices for Owner/Nft lab from CSUB 4420 Advance Databases Lab 2.**
+
+[Proposal](https://jhicks.cs3680.com/4420/?md=proposal)  
+[Lab 2 Original](https://jhicks.cs3680.com/4420/?page=lab2)<br>
+[Lab 2 using SQLITE3 Micro Service](https://jhicks.cs3680.com/4420/?page=sql)  
+[Lab 2 using MongoDB Micro Service](https://jhicks.cs3680.com/4420/?page=mongo)
+<br>
+<br>
+<br>
+
+**Below are my schemas for each database.**
+<br>
+
 
 ## SQLITE3: 
 ```sql

@@ -13,10 +13,10 @@ function onLoad(){
     {label: "Project Proposal", href: "?md=proposal"},
     {label: "Week 1 Update", href: "?md=week1"},
     {label: "Week 2 Update", href: "?md=week2"},
+    {label: "Results", href: "?md=results"},
     {label: "4420 Lab 2", href: "?page=lab2"},
     {label: "Final SQLITE3", href: "?page=sql"},
     {label: "Final MongoDB", href: "?page=mongo"},
-    {label: "Results", href: "#"},
   ]
   for (link of links){
     let li = $(`<li></li>`);

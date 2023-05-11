@@ -181,6 +181,10 @@ I need to create the front-end for my final lab that will look similar to Lab 2 
 
 [ColorKit](https://colorkit.co/color/0000ff/) 
 
+[Github | 4420 Final Project](https://github.com/jeffh1cks/4420)  
+
+[Github | 4420 API ](https://github.com/jeffh1cks/4420_API)
+
  </div>
 
 
